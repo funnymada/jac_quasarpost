@@ -1,4 +1,5 @@
 <template>
+  <q-tabs align="center">
     <div class="styleExample">
            <q-card class="my-card">
               <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -26,11 +27,12 @@
   <div class="q-pa-md">
   </div>
 </div>
+</q-tabs>
 </template>
 
 <script setup>
 
-import { ref, onMounted } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
 const val = ref(true)
@@ -44,7 +46,7 @@ const fetchData = async () => {
   post.value = dataAxios.data
 }
 
-onMounted(() => fetchData())
+onBeforeMount(() => fetchData())
 </script>
 
 <style lang="sass" scoped>
@@ -53,5 +55,4 @@ onMounted(() => fetchData())
   max-width: 250px
 .styleExample
     margin-top:10vh
-    margin-left:40%
 </style>

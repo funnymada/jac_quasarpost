@@ -28,9 +28,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import axios from 'axios'
 import PostCard from '../components/PostCard.vue'
+// import { useRoute } from 'vue-router'
+
+// let valore = false
+
+// const route = useRoute()
+
 const post = ref([])
 
 const isGrid = ref(true)
@@ -54,6 +60,6 @@ const switchMode = () => {
   return isGrid
 }
 
-fetchData()
+onBeforeMount(() => fetchData())
 
 </script>
