@@ -12,8 +12,8 @@
       </q-toolbar>
 
       <q-tabs align="center">
-        <q-route-tab :to="{ path: '/', query: { valore: true }, force: true }" label="card" />
-        <q-route-tab :to="{ path: '/', query: { valore: false }, force: true }" label="label" />
+        <q-route-tab :to="{ path: '/', query: { val: true }, force: true }" label="card" />
+        <q-route-tab :to="{ path: '/', query: { val: false }, force: true }" label="label" />
       </q-tabs>
     </q-header>
     <q-page-container>

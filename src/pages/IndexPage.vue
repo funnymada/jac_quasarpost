@@ -28,18 +28,22 @@
 </template>
 
 <script setup>
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount, onMounted } from 'vue'
 import axios from 'axios'
 import PostCard from '../components/PostCard.vue'
-// import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 
-// let valore = false
+let valore = false
 
-// const route = useRoute()
+const route = useRoute()
+onMounted(() => {
+  valore = route.query.val
+  console.log(route.query.val)
+})
 
 const post = ref([])
 
-const isGrid = ref(true)
+const isGrid = ref(valore)
 const fields = ref([
   { name: 'index', label: '#', field: 'index' },
   { name: 'userId', label: 'Userd Id', field: 'userId' },
