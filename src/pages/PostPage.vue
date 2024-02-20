@@ -12,6 +12,7 @@
     </q-card-section>
      <q-card-actions align="right">
             <q-checkbox
+                :disabled="storePopUp.logged"
                 color="red"
                  v-model="val"
                  checked-icon="favorite"
@@ -28,6 +29,7 @@
   </div>
 </div>
 </q-tabs>
+<loginPopUp></loginPopUp>
 </template>
 
 <script setup>
@@ -35,11 +37,14 @@
 import { ref, onBeforeMount } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
+import loginPopUp from 'src/components/loginPopUp.vue'
+
 const val = ref(true)
 const val2 = ref(true)
 const post = ref('')
 const route = useRoute()
 const itemId = route.params.id
+const storePopUp = loginPopUp
 
 const fetchData = async () => {
   const dataAxios = await axios.get(`https://jsonplaceholder.typicode.com/posts/${itemId}`)

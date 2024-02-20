@@ -5,7 +5,7 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" @click="returnHome()">
           </q-avatar>
           Post
         </q-toolbar-title>
@@ -27,3 +27,11 @@
 
   </q-layout>
 </template>
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const returnHome = () => {
+  router.push('/')
+}
+</script>

@@ -12,8 +12,8 @@
       </q-toolbar>
 
       <q-tabs align="center">
-        <q-route-tab :to="{ path: '/', query: { val: true }, force: true }" label="card" />
-        <q-route-tab :to="{ path: '/', query: { val: false }, force: true }" label="label" />
+        <q-route-tab :to="{ path: '/', query: { val: 'card' } }" label="card"  />
+        <q-route-tab :to="{ path: '/', query: { val: 'label' } }" label="label" />
       </q-tabs>
     </q-header>
     <q-page-container>
@@ -27,10 +27,19 @@
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
         </q-toolbar-title>
+        <q-tabs align="center">
+         <q-btn class="bottone" label="login" outline style="color: goldenrod" @click="dialogPopUp = true"></q-btn>
+    </q-tabs>
       </q-toolbar>
     </q-footer>
 
   </q-layout>
 </template>
 
-<script></script>
+<script setup>
+import { onMounted } from 'vue'
+// import loginPopUp from 'src/components/loginPopUp.vue'
+onMounted(() => {
+  console.log('qualcosa')
+})
+</script>

@@ -1,11 +1,7 @@
 <template>
-  <q-btn color="primary" @click=switchMode class="q-mt-md" align="center">
-    {{ isGrid }}
-      <q-tooltip class="bg-accent">click to switch mode from table to post</q-tooltip>
-    </q-btn>
   <div class="q-pa-md">
 
-      <div v-if="!isGrid">
+      <div v-if="isGrid == 'label'">
     <q-table
       style="height: 400px"
       flat bordered
@@ -20,7 +16,7 @@
   </div>
 </div>
 
-  <div v-if="isGrid">
+  <div v-if="isGrid == 'card'">
       <PostCard :props="{post, fields, filter,isGrid}"/>
     </div>
   <q-page class="flex flex-center">
@@ -28,22 +24,21 @@
 </template>
 
 <script setup>
-import { ref, onBeforeMount, onMounted } from 'vue'
+import { ref, onBeforeMount, watch } from 'vue'
 import axios from 'axios'
 import PostCard from '../components/PostCard.vue'
 import { useRoute } from 'vue-router'
 
-let valore = false
+const isGrid = ref('label')
 
 const route = useRoute()
-onMounted(() => {
-  valore = route.query.val
-  console.log(route.query.val)
+
+watch(() => route.query.val, (newValue, oldValue) => {
+  switchMode(newValue)
 })
 
 const post = ref([])
 
-const isGrid = ref(valore)
 const fields = ref([
   { name: 'index', label: '#', field: 'index' },
   { name: 'userId', label: 'Userd Id', field: 'userId' },
@@ -59,8 +54,8 @@ const fetchData = async () => {
   post.value = dataAxios.data
 }
 
-const switchMode = () => {
-  isGrid.value = !isGrid.value
+const switchMode = (valore) => {
+  isGrid.value = valore
   return isGrid
 }
 
