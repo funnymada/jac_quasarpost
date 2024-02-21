@@ -11,8 +11,7 @@
             {{ post.body }}
     </q-card-section>
      <q-card-actions align="right">
-            <q-checkbox
-                :disabled="storePopUp.logged"
+      <q-checkbox v-if = watchCondition.value
                 color="red"
                  v-model="val"
                  checked-icon="favorite"
@@ -34,7 +33,7 @@
 
 <script setup>
 
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount, watch } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
 import loginPopUp from 'src/components/loginPopUp.vue'
@@ -45,11 +44,16 @@ const post = ref('')
 const route = useRoute()
 const itemId = route.params.id
 const storePopUp = loginPopUp
+const watchCondition = ref(true)
 
 const fetchData = async () => {
   const dataAxios = await axios.get(`https://jsonplaceholder.typicode.com/posts/${itemId}`)
   post.value = dataAxios.data
 }
+
+watch(() => storePopUp.logged, (newValue, oldValue) => {
+  watchCondition.value = newValue
+})
 
 onBeforeMount(() => fetchData())
 </script>

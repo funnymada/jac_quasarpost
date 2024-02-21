@@ -53,6 +53,9 @@ const confirmLogin = () => {
     background-color: rgb(149, 236, 236);
 }
 .nomeInput{
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-bottom:20px ;
   width: fit-content;
 }

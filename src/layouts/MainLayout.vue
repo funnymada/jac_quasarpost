@@ -27,9 +27,9 @@
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
         </q-toolbar-title>
-        <q-tabs align="center">
-         <q-btn class="bottone" label="login" outline style="color: goldenrod" @click="dialogPopUp = true"></q-btn>
-    </q-tabs>
+        <div class="divLoginPopUp">
+         <loginPopUp></loginPopUp>
+        </div>
       </q-toolbar>
     </q-footer>
 
@@ -37,9 +37,11 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-// import loginPopUp from 'src/components/loginPopUp.vue'
-onMounted(() => {
-  console.log('qualcosa')
-})
+import loginPopUp from 'src/components/loginPopUp.vue'
+
 </script>
+<style>
+.divLoginPopUp{
+  margin-top:2%;
+}
+</style>
